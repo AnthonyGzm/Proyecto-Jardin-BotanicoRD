@@ -18,26 +18,40 @@ document.getElementById("imageUpload").addEventListener("change", function () {
     const reader = new FileReader();
     reader.onload = function (e) {
         const img = document.getElementById("previewImage");
+        const box = document.getElementById("previewContainer");
+
         img.src = e.target.result;
-        img.style.opacity = "1";
+
+        img.style.display = "block";
+        box.style.display = "block";
     };
+
     reader.readAsDataURL(file);
 });
+
 
 document.getElementById("imageUrl").addEventListener("input", function () {
     const url = this.value.trim();
     const img = document.getElementById("previewImage");
+    const box = document.getElementById("previewContainer");
 
     if (url === "") {
-        img.src = "https://via.placeholder.com/450x300?text=Vista+previa";
+        img.style.display = "none";
+        box.style.display = "none";
         return;
     }
 
-    img.src = url;
+    img.onload = function () {
+        img.style.display = "block";
+        box.style.display = "block";
+    };
 
     img.onerror = function () {
-        img.src = "https://via.placeholder.com/450x300?text=URL+no+válida";
+        img.style.display = "none";
+        box.style.display = "none";
     };
+
+    img.src = url;
 });
 
 function analyzeImage() {
@@ -61,7 +75,6 @@ function analyzeImage() {
         .catch(err => console.error(err));
 }
 
-
 function analyzeUrl() {
     const imageUrl = document.getElementById("imageUrl").value;
 
@@ -84,6 +97,9 @@ function analyzeUrl() {
 }
 
 
+// =============================
+// MOSTRAR RESULTADOS
+// =============================
 function displayResults(data) {
     const box = document.getElementById("results");
     box.style.display = "block";
@@ -98,7 +114,6 @@ function displayResults(data) {
         html += `
             <p><strong>Flor Detectada:</strong> ${top.tagName.toUpperCase()}</p>
             <p><strong>Probabilidad:</strong> ${(top.probability * 100).toFixed(2)}%</p>
-
             <hr>
             <h4 class="fw-bold">Todas las predicciones:</h4>
             <ul>

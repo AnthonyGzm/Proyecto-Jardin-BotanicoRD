@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/favicon.png">
+
     <title>Identificador de Flores - Jardín Botánico</title>
 
     <!-- BOOTSTRAP -->
@@ -10,7 +12,6 @@
 
     <!-- Íconos -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -26,17 +27,18 @@
     </div>
 </nav>
 
-
 <!-- TITULAR -->
 <div class="text-center mt-4 text-white">
     <h1 class="fw-bold"> Identificador de Flores del Jardín Botánico</h1>
     <p class="opacity-75">Sube una imagen o pega un enlace para identificar flores.</p>
 </div>
 
-<div class="container text-center mt-4">
+<!-- PREVIEW OCULTO AL INICIO -->
+<div class="container text-center mt-4" id="previewContainer" style="display:none;">
     <img id="previewImage"
-         src="https://via.placeholder.com/450x300?text=Vista+previa"
-         class="preview-photo img-fluid rounded shadow-lg">
+         src=""
+         class="preview-photo img-fluid rounded shadow-lg"
+         style="display:none;">
 </div>
 
 <!-- CONTENEDOR PRINCIPAL -->
@@ -80,11 +82,9 @@
     </div>
 </div>
 
-
 <!-- RESULTADOS -->
 <div class="container">
-    <div id="results" class="card result-card shadow-lg border-0 p-4 text-white mt-4" style="display:none;">
-    </div>
+    <div id="results" class="card result-card shadow-lg border-0 p-4 text-white mt-4" style="display:none;"></div>
 </div>
 
 <!-- FOOTER -->
@@ -92,7 +92,6 @@
     © 2025 - Proyecto Jardín Botánico 
     Anthony Guzman
 </footer>
-
 
 <script src="script.js"></script>
 </body>

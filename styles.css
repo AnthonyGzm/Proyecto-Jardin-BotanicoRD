@@ -41,7 +41,6 @@ body {
     border-color: #29e0b4;
 }
 
-
 .form-control {
     border-radius: 10px;
     background: #0d1917;
@@ -57,7 +56,6 @@ body {
     background: #112522;
     color: white;
 }
-
 
 .btn-success,
 .btn-primary {
@@ -86,7 +84,6 @@ body {
     transform: scale(1.03);
 }
 
-
 .result-card {
     background: rgba(15, 29, 26, 0.92);
     border-radius: 18px;
@@ -101,7 +98,6 @@ body {
     0% { opacity: 0; transform: translateY(8px); }
     100% { opacity: 1; transform: translateY(0); }
 }
-
 
 h1 {
     text-shadow: 0 0 6px rgba(255,255,255,0.25);
@@ -131,4 +127,19 @@ footer {
 .preview-photo:hover {
     transform: scale(1.03);
     box-shadow: 0 14px 45px rgba(0,0,0,0.6);
+}
+
+#previewImage {
+    display: none;
+}
+
+#previewContainer {
+    display: none;
+    text-align: center;
+}
+
+#previewContainer img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
 }
