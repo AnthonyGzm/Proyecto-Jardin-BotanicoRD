@@ -184,7 +184,7 @@ Para probar la aplicación, puedes usar URLs de imágenes de flores o subir tus 
 
 - **Anthony Guzmán** - *Estudiante ITLA* - [@AnthonyGzm](https://github.com/AnthonyGzm)
 - **Mario Suero** - *Estudiante ITLA*  - [@K1lluaZk](https://github.com/K1lluaZk)
-- **Albert ** - *Estudiante ITLA*  - [@Fenndy999](https://github.com/Fenndy999)
+- **Albert Cornelio** - *Estudiante ITLA*  - [@Fenndy999](https://github.com/Fenndy999)
 
 ---
 
