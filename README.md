@@ -75,7 +75,15 @@ Se requiere:
    - Clase detectada  
    - Probabilidad  
    - Predicciones alternativas  
-   - Advertencia si la imagen no contiene una flor  
+   - Advertencia si la imagen no contiene una flor
+
+---
+
+# Imagenes de ejemplo
+
+<img width="975" height="304" alt="image" src="https://github.com/user-attachments/assets/8a76280c-eef6-4af2-9d23-d2746bca7171" />
+<img width="807" height="631" alt="image" src="https://github.com/user-attachments/assets/938236bd-d29f-4f5b-9565-bf45fcbc8a3a" />
+<img width="975" height="325" alt="image" src="https://github.com/user-attachments/assets/a1137ed1-9f9c-4242-82a8-2d231fdaa607" />
 
 
 ---
