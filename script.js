@@ -11,6 +11,14 @@ const endpointUrl =
     `${endpoint}customvision/v3.0/Prediction/${projectId}/classify/iterations/${publishedName}/url`;
 
 
+const validFlowerTags = [
+    "daisy",
+    "dandelion",
+    "rose",
+    "sunflower",
+    "tulip"
+];
+
 document.getElementById("imageUpload").addEventListener("change", function () {
     let file = this.files[0];
     if (!file) return;
@@ -28,7 +36,6 @@ document.getElementById("imageUpload").addEventListener("change", function () {
 
     reader.readAsDataURL(file);
 });
-
 
 document.getElementById("imageUrl").addEventListener("input", function () {
     const url = this.value.trim();
@@ -97,34 +104,45 @@ function analyzeUrl() {
 }
 
 
-// =============================
-// MOSTRAR RESULTADOS
-// =============================
 function displayResults(data) {
     const box = document.getElementById("results");
+    const preview = document.getElementById("previewImage");
     box.style.display = "block";
 
+    // Ordenar por probabilidad (primero la más alta)
+    data.predictions.sort((a, b) => b.probability - a.probability);
+
+    const top = data.predictions[0];
+    const detectedLabel = top.tagName.toLowerCase();
+
+
+    if (!validFlowerTags.includes(detectedLabel) || top.probability < 0.40) {
+        preview.src = "img/no_flor.png";
+        box.innerHTML = `
+            <h3 class="fw-bold text-danger">La ERROR: Imagen No Es Una Flor</h3>
+            <p>La imagen no coincide con ninguna flor del sistema.</p>
+        `;
+        return; // detener aquí
+    }
+
+    // =============================
+    // SI ES UNA FLOR → MOSTRAR RESULTADOS NORMALES
+    // =============================
     let html = `<h3 class="fw-bold">Resultados:</h3>`;
 
-    if (data.predictions && data.predictions.length > 0) {
-        data.predictions.sort((a, b) => b.probability - a.probability);
+    html += `
+        <p><strong>Flor Detectada:</strong> ${top.tagName.toUpperCase()}</p>
+        <p><strong>Probabilidad:</strong> ${(top.probability * 100).toFixed(2)}%</p>
+        <hr>
+        <h4 class="fw-bold">Todas las predicciones:</h4>
+        <ul>
+    `;
 
-        const top = data.predictions[0];
+    data.predictions.forEach(p => {
+        html += `<li><strong>${p.tagName}</strong>: ${(p.probability * 100).toFixed(2)}%</li>`;
+    });
 
-        html += `
-            <p><strong>Flor Detectada:</strong> ${top.tagName.toUpperCase()}</p>
-            <p><strong>Probabilidad:</strong> ${(top.probability * 100).toFixed(2)}%</p>
-            <hr>
-            <h4 class="fw-bold">Todas las predicciones:</h4>
-            <ul>
-        `;
-
-        data.predictions.forEach(p => {
-            html += `<li><strong>${p.tagName}</strong>: ${(p.probability * 100).toFixed(2)}%</li>`;
-        });
-
-        html += `</ul>`;
-    }
+    html += `</ul>`;
 
     box.innerHTML = html;
 }
