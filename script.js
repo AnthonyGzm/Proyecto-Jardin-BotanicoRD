@@ -122,12 +122,11 @@ function displayResults(data) {
             <h3 class="fw-bold text-danger">La ERROR: Imagen No Es Una Flor</h3>
             <p>La imagen no coincide con ninguna flor del sistema.</p>
         `;
-        return; // detener aquí
+        return; 
     }
 
-    // =============================
+    
     // SI ES UNA FLOR → MOSTRAR RESULTADOS NORMALES
-    // =============================
     let html = `<h3 class="fw-bold">Resultados:</h3>`;
 
     html += `
